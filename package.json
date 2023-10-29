@@ -39,7 +39,7 @@
 	},
 	"dependencies": {
 		"editorconfig": "0.12.2",
-        "open": "0.0.5"
+        "open": "6.0.0"
 	},
 	"devDependencies": {
 		"typescript": "1.6.2",
