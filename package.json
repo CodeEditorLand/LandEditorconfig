@@ -1,34 +1,33 @@
 {
 	"name": "vscodeEditorConfig",
 	"displayName": "Editor Config for VS Code",
+	"version": "0.0.1",
+	"private": false,
 	"description": "DEPRECATED - See Read Me for more information",
-	"publisher": "chrisdias",
-	"version": "0.1.7",
-	"icon": "./EditorConfig_icon.png",
-	"engines": {
-		"vscode": "^0.10.1"
-	},
-	"author": "Microsoft Corporation",
-	"license": "MIT",
-	"categories": [
-		"Other"
+	"keywords": [
+		"land"
 	],
-	"homepage": "https://github.com/Microsoft/vscode-editorconfig/blob/master/README.md",
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandEditorConfig#readme",
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandEditorConfig/issues"
+	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Microsoft/vscode-editorconfig.git"
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandEditorConfig.git"
 	},
-	"bugs": {
-		"url": "https://github.com/Microsoft/vscode-editorconfig/issues"
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "🌆 — Land —",
+		"email": "Land@PlayForm.Cloud",
+		"url": "HTTPS://Land.PlayForm.Cloud"
 	},
-	"galleryBanner": {
-		"color": "#37699A",
-		"theme": "dark"
-	},
-	"activationEvents": [
-		"*"
-	],
+	"type": "module",
 	"main": "./out/src/editorConfigMain",
+	"scripts": {
+		"Document": "Document 'Source/**/*.ts'",
+		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+		"prepublishOnly": "Build 'Source/**/*.ts'"
+	},
 	"contributes": {
 		"commands": [
 			{
@@ -37,16 +36,23 @@
 			}
 		]
 	},
+	"activationEvents": [
+		"*"
+	],
 	"dependencies": {
 		"editorconfig": "0.12.2",
-        "open": "0.0.5"
+		"open": "0.0.5"
 	},
 	"devDependencies": {
-		"typescript": "^1.6.2",
-		"vscode": "0.10.x"
+		"@playform/build": "0.0.7",
+		"@playform/document": "0.0.6"
 	},
-	"scripts": {
-		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
-		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
+	"publishConfig": {
+		"access": "public"
+	},
+	"icon": "./EditorConfig_icon.png",
+	"galleryBanner": {
+		"color": "#37699A",
+		"theme": "dark"
 	}
 }
