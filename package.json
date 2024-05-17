@@ -1,27 +1,7 @@
 {
 	"name": "vscodeEditorConfig",
 	"displayName": "Editor Config for VS Code",
-	"version": "0.0.1",
-	"private": false,
 	"description": "DEPRECATED - See Read Me for more information",
-	"keywords": [
-		"land"
-	],
-	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandEditorConfig#readme",
-	"bugs": {
-		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandEditorConfig/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+HTTPS://github.com/CodeEditorLand/LandEditorConfig.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "🛬 Land —",
-		"email": "Land@PlayForm.Cloud",
-		"url": "HTTPS://Land.PlayForm.Cloud"
-	},
-	"type": "module",
 	"main": "./out/src/editorConfigMain",
 	"scripts": {
 		"Document": "Document 'Source/**/*.ts'",
@@ -44,11 +24,7 @@
 		"open": "10.1.0"
 	},
 	"devDependencies": {
-		"@playform/build": "0.0.7",
-		"@playform/document": "0.0.6"
-	},
-	"publishConfig": {
-		"access": "public"
+		"@playform/build": "0.0.7"
 	},
 	"icon": "./EditorConfig_icon.png",
 	"galleryBanner": {
