@@ -18,8 +18,8 @@
 		"*"
 	],
 	"dependencies": {
-		"editorconfig": "0.12.2",
-		"open": "0.0.5"
+		"editorconfig": "2.0.0",
+		"open": "10.1.0"
 	},
 	"devDependencies": {},
 	"icon": "./EditorConfig_icon.png",
