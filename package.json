@@ -1,11 +1,7 @@
 {
-	"name": "vscodeEditorConfig",
-	"displayName": "Editor Config for VS Code",
-	"description": "DEPRECATED - See Read Me for more information",
-	"main": "./out/src/editorConfigMain",
-	"scripts": {
-		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
-	},
+	"activationEvents": [
+		"*"
+	],
 	"contributes": {
 		"commands": [
 			{
@@ -14,17 +10,21 @@
 			}
 		]
 	},
-	"activationEvents": [
-		"*"
-	],
 	"dependencies": {
 		"editorconfig": "2.0.0",
 		"open": "10.1.0"
 	},
+	"description": "DEPRECATED - See Read Me for more information",
 	"devDependencies": {},
-	"icon": "./EditorConfig_icon.png",
+	"displayName": "Editor Config for VS Code",
 	"galleryBanner": {
 		"color": "#37699A",
 		"theme": "dark"
+	},
+	"icon": "./EditorConfig_icon.png",
+	"main": "./out/src/editorConfigMain",
+	"name": "vscodeEditorConfig",
+	"scripts": {
+		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
 	}
 }
