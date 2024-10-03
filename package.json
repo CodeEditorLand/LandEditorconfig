@@ -1,34 +1,7 @@
 {
-	"name": "vscodeEditorConfig",
-	"displayName": "Editor Config for VS Code",
-	"description": "DEPRECATED - See Read Me for more information",
-	"publisher": "chrisdias",
-	"version": "0.1.7",
-	"icon": "./EditorConfig_icon.png",
-	"engines": {
-		"vscode": "^0.10.1"
-	},
-	"author": "Microsoft Corporation",
-	"license": "MIT",
-	"categories": [
-		"Other"
-	],
-	"homepage": "https://github.com/Microsoft/vscode-editorconfig/blob/master/README.md",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Microsoft/vscode-editorconfig.git"
-	},
-	"bugs": {
-		"url": "https://github.com/Microsoft/vscode-editorconfig/issues"
-	},
-	"galleryBanner": {
-		"color": "#37699A",
-		"theme": "dark"
-	},
 	"activationEvents": [
 		"*"
 	],
-	"main": "./out/src/editorConfigMain",
 	"contributes": {
 		"commands": [
 			{
@@ -38,15 +11,20 @@
 		]
 	},
 	"dependencies": {
-		"editorconfig": "0.12.2",
-        "open": "0.0.5"
+		"editorconfig": "2.0.0",
+		"open": "10.1.0"
 	},
-	"devDependencies": {
-		"typescript": "^1.6.2",
-		"vscode": "0.10.x"
+	"description": "DEPRECATED - See Read Me for more information",
+	"devDependencies": {},
+	"displayName": "Editor Config for VS Code",
+	"galleryBanner": {
+		"color": "#37699A",
+		"theme": "dark"
 	},
+	"icon": "./EditorConfig_icon.png",
+	"main": "./out/src/editorConfigMain",
+	"name": "vscodeEditorConfig",
 	"scripts": {
-		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
 		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
 	}
 }
