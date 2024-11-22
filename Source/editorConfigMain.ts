@@ -141,6 +141,7 @@ function applyEditorConfigToTextEditor(
 	}
 
 	let doc = textEditor.document;
+
 	let editorconfig = provider.getSettingsForDocument(doc);
 
 	if (!editorconfig) {
@@ -149,6 +150,7 @@ function applyEditorConfigToTextEditor(
 	}
 
 	let { insertSpaces, tabSize } = textEditor.options;
+
 	let newOptions = Utils.fromEditorConfig(editorconfig, {
 		insertSpaces,
 		tabSize,
@@ -187,17 +189,21 @@ function insertFinalNewlineTransform(
 ): void {
 	if (editorconfig.insert_final_newline && textDocument.lineCount > 0) {
 		let lastLine = textDocument.lineAt(textDocument.lineCount - 1);
+
 		let lastLineLength = lastLine.text.length;
+
 		if (lastLineLength < 1) {
 			return;
 		}
 		let editor = findEditor(textDocument);
+
 		if (!editor) {
 			return;
 		}
 		editor
 			.edit((edit) => {
 				let pos = new Position(lastLine.lineNumber, lastLineLength);
+
 				return edit.insert(pos, newline(editorconfig));
 			})
 			.then(() => textDocument.save());
@@ -231,10 +237,12 @@ function generateEditorConfig() {
 		window.showInformationMessage(
 			"Please open a folder before generating an .editorconfig file",
 		);
+
 		return;
 	}
 
 	let editorConfigurationNode = workspace.getConfiguration("editor");
+
 	let settings = Utils.toEditorConfig({
 		insertSpaces: editorConfigurationNode.get<string | boolean>(
 			"insertSpaces",
@@ -260,12 +268,14 @@ function generateEditorConfig() {
 			window.showInformationMessage(
 				"An .editorconfig file already exists in your workspace.",
 			);
+
 			return;
 		}
 
 		fs.writeFile(editorconfigFile, fileContents, (err) => {
 			if (err) {
 				window.showErrorMessage(err.toString());
+
 				return;
 			}
 		});
@@ -306,11 +316,14 @@ export class Utils {
 			case true:
 				result.indent_style = "space";
 				result.indent_size = Utils.resolveTabSize(options.tabSize);
+
 				break;
+
 			case false:
 			case "auto":
 				result.indent_style = "tab";
 				result.tab_width = Utils.resolveTabSize(options.tabSize);
+
 				break;
 		}
 
