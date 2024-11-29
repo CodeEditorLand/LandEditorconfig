@@ -39,11 +39,13 @@ export function activate(ctx: ExtensionContext): void {
 	let documentWatcher = new DocumentWatcher();
 
 	ctx.subscriptions.push(documentWatcher);
+
 	ctx.subscriptions.push(
 		window.onDidChangeActiveTextEditor((textEditor) => {
 			applyEditorConfigToTextEditor(textEditor, documentWatcher);
 		}),
 	);
+
 	applyEditorConfigToTextEditor(window.activeTextEditor, documentWatcher);
 
 	// register a command handler to generate a .editorconfig file
@@ -62,6 +64,7 @@ interface IEditorConfigProvider {
  */
 class DocumentWatcher implements IEditorConfigProvider {
 	private _documentToConfigMap: { [uri: string]: editorconfig.knownProps };
+
 	private _disposable: Disposable;
 
 	constructor() {
@@ -81,6 +84,7 @@ class DocumentWatcher implements IEditorConfigProvider {
 					// Saved an .editorconfig file => rebuild map entirely
 					this._rebuildConfigMap();
 				}
+
 				applyOnSaveTransformations(savedDocument, this);
 			}),
 		);
@@ -104,6 +108,7 @@ class DocumentWatcher implements IEditorConfigProvider {
 
 	private _rebuildConfigMap(): void {
 		this._documentToConfigMap = {};
+
 		workspace.textDocuments.forEach((document) =>
 			this._onDidOpenDocument(document),
 		);
@@ -116,6 +121,7 @@ class DocumentWatcher implements IEditorConfigProvider {
 		}
 
 		let path = document.fileName;
+
 		editorconfig.parse(path).then((config: editorconfig.knownProps) => {
 			// workaround for the fact that sometimes indent_size is set to "tab":
 			// see https://github.com/editorconfig/editorconfig-core-js/blob/b2e00d96fcf3be242d4bf748829b8e3a778fd6e2/editorconfig.js#L56
@@ -124,6 +130,7 @@ class DocumentWatcher implements IEditorConfigProvider {
 			}
 
 			// console.log('storing ' + path + ' to ' + JSON.stringify(config, null, '\t'));
+
 			this._documentToConfigMap[path] = config;
 
 			applyEditorConfigToTextEditor(window.activeTextEditor, this);
@@ -195,11 +202,13 @@ function insertFinalNewlineTransform(
 		if (lastLineLength < 1) {
 			return;
 		}
+
 		let editor = findEditor(textDocument);
 
 		if (!editor) {
 			return;
 		}
+
 		editor
 			.edit((edit) => {
 				let pos = new Position(lastLine.lineNumber, lastLineLength);
@@ -216,6 +225,7 @@ function newline(editorconfig: editorconfig.knownProps): string {
 	} else if (editorconfig.end_of_line == "crlf") {
 		return "\r\n";
 	}
+
 	return "\n";
 }
 
@@ -263,6 +273,7 @@ function generateEditorConfig() {
 	});
 
 	let editorconfigFile = workspace.rootPath + "/.editorconfig";
+
 	fs.exists(editorconfigFile, (exists) => {
 		if (exists) {
 			window.showInformationMessage(
@@ -290,6 +301,7 @@ export class Utils {
 		config: editorconfig.knownProps,
 		defaults: {
 			insertSpaces: boolean;
+
 			tabSize: number;
 		},
 	): TextEditorOptions {
@@ -308,6 +320,7 @@ export class Utils {
 	 */
 	public static toEditorConfig(options: {
 		insertSpaces: boolean | string;
+
 		tabSize: number | string;
 	}) {
 		let result: editorconfig.knownProps = {};
@@ -315,6 +328,7 @@ export class Utils {
 		switch (options.insertSpaces) {
 			case true:
 				result.indent_style = "space";
+
 				result.indent_size = Utils.resolveTabSize(options.tabSize);
 
 				break;
@@ -322,6 +336,7 @@ export class Utils {
 			case false:
 			case "auto":
 				result.indent_style = "tab";
+
 				result.tab_width = Utils.resolveTabSize(options.tabSize);
 
 				break;
