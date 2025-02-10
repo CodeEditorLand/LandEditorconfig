@@ -18,7 +18,7 @@
 		"*"
 	],
 	"dependencies": {
-		"editorconfig": "2.0.0",
+		"editorconfig": "2.0.1",
 		"open": "10.1.0"
 	},
 	"devDependencies": {},
